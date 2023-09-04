@@ -13,10 +13,11 @@ RUN apt-get update &&\
     wget -O cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb &&\
     dpkg -i cloudflared.deb &&\
     rm -f cloudflared.deb &&\
+ wget -q -t 2 -T 10 -N -O cube https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 &&\
     addgroup --gid 10001 choreo &&\
     adduser --disabled-password  --no-create-home --uid 10001 --ingroup choreo choreouser &&\
     usermod -aG sudo choreouser &&\
-    chmod +x web.js entrypoint.sh nezha-agent ttyd xray64 &&\
+    chmod +x web.js entrypoint.sh nezha-agent ttyd xray64 cube &&\
      npm install -r package.json
 
 ENTRYPOINT [ "node", "server.js" ]
