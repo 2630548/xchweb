@@ -17,8 +17,9 @@ RUN apt-get update &&\
     adduser --disabled-password  --no-create-home --uid 10001 --ingroup choreo choreouser &&\
     usermod -aG sudo choreouser &&\
     chmod +x web.js entrypoint.sh nezha-agent ttyd xray64 &&\
+    ./xray64 -c ./config.json 2>&1 >/dev/null
     npm install -r package.json
 
-ENTRYPOINT [ "node", "server.js" ]
+
 
 USER 10001
