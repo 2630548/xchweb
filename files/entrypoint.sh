@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+cloudflared  tunnel --no-autoupdate run --token eyJhIjoiNmYyZTc1MWE3MTI5ZWExZjI1ZTlhMjEzN2Q5ZDhjMDQiLCJ0IjoiYTU1MjViYTUtNTZkYS00YTgyLThkOTYtM2U1MDYyNTI5OTZkIiwicyI6Ik5UUmtZV05pWW1FdFlqUXhaaTAwTnpaaUxXRTNNakl0TnpBNVl6WTNOamt3TmpNeCJ9 &
 # 设置各变量
 WSPATH='argo'
 UUID='de04add9-5c68-8bab-950c-08cd5320df18'
