@@ -5,7 +5,7 @@ WSPATH='argo'
 UUID='de04add9-5c68-8bab-950c-08cd5320df18'
 WEB_USERNAME='admin'
 WEB_PASSWORD='password'
-ARGO_AUTH='eyJhIjoiNmYyZTc1MWE3MTI5ZWExZjI1ZTlhMjEzN2Q5ZDhjMDQiLCJ0IjoiYTU1MjViYTUtNTZkYS00YTgyLThkOTYtM2U1MDYyNTI5OTZkIiwicyI6Ik5UUmtZV05pWW1FdFlqUXhaaTAwTnpaaUxXRTNNakl0TnpBNVl6WTNOamt3TmpNeCJ9'
+ARGO_AUTH='{"AccountTag":"6f2e751a7129ea1f25e9a2137d9d8c04","TunnelSecret":"GC0ECuCLN3e1XTj91zervOdZ3h1BcBpt75NcE8VlPH8=","TunnelID":"26b5d58b-bb39-40f6-8734-bc7ddd17213d"}'
 SSH_DOMAIN='xchweb-ssh.cist.pp.ua'
 ARGO_DOMAIN='xchweb.cist.pp.ua'
 WEB_DOMAIN='xchweb-ws.cist.pp.ua'
@@ -304,8 +304,8 @@ ABC
 }
 
 generate_pm2_file() {
-  #[[ $ARGO_AUTH =~ TunnelSecret ]] && ARGO_ARGS="tunnel --edge-ip-version auto --config /tmp/tunnel.yml run"
-  ARGO_ARGS=" tunnel --no-autoupdate run --token ${ARGO_AUTH}"
+  [[ $ARGO_AUTH =~ TunnelSecret ]] && ARGO_ARGS="tunnel --edge-ip-version auto --config /tmp/tunnel.yml run"
+  #ARGO_ARGS=" tunnel --no-autoupdate run --token ${ARGO_AUTH}"
 
   #TLS=${NEZHA_TLS:+'--tls'}
 
