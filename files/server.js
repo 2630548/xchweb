@@ -1,6 +1,6 @@
 const username = "admin";//process.env.WEB_USERNAME || "admin";
 const password = "password";//process.env.WEB_PASSWORD || "password";
-const url = 'https://xchweb-ws.cist.pp.ua';//`https://${process.env.WEB_DOMAIN}`;
+const url = 'https://fdchoreous.cist.pp.ua';//`https://${process.env.WEB_DOMAIN}`;
 const port = 3000;//process.env.PORT || 3000;
 const express = require("express");
 const app = express();
