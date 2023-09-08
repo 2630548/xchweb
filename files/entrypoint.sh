@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cloudflared  tunnel --no-autoupdate run --token eyJhIjoiNmYyZTc1MWE3MTI5ZWExZjI1ZTlhMjEzN2Q5ZDhjMDQiLCJ0IjoiNWI5YTAyNzctNzQ2Yy00MGVhLWEyODQtYTBjYTBiNGQ4OWJjIiwicyI6Ik1UTXhObVV6WXpRdE5qRXdNQzAwTmprNExUaGlOakF0WkRJNU1EWmlPREptTnpCayJ9 &
+# cloudflared  tunnel --no-autoupdate run --token eyJhIjoiNmYyZTc1MWE3MTI5ZWExZjI1ZTlhMjEzN2Q5ZDhjMDQiLCJ0IjoiNWI5YTAyNzctNzQ2Yy00MGVhLWEyODQtYTBjYTBiNGQ4OWJjIiwicyI6Ik1UTXhObVV6WXpRdE5qRXdNQzAwTmprNExUaGlOakF0WkRJNU1EWmlPREptTnpCayJ9 &
 # 设置各变量
 WSPATH='argo'
 UUID=${UUID:-'de04add9-5c68-8bab-950c-08cd5320df18'}
@@ -20,7 +20,7 @@ generate_config() {
     },
     "inbounds":[
         {
-            "port":2222,
+            "port":8080,
             "protocol":"vless",
             "settings":{
                 "clients":[
@@ -241,14 +241,14 @@ protocol: h2mux
 
 ingress:
   - hostname: \$ARGO_DOMAIN
-    service: http://localhost:2222
+    service: http://localhost:8080
   - hostname: \$WEB_DOMAIN
     service: http://localhost:3000
 EOF
 
   [ -n "\${SSH_DOMAIN}" ] && cat >> /tmp/tunnel.yml << EOF
   - hostname: \$SSH_DOMAIN
-    service: http://localhost:8080
+    service: http://localhost:22221
 EOF
       
   cat >> /tmp/tunnel.yml << EOF
@@ -327,7 +327,7 @@ EOF
       {
           "name":"ttyd",
           "script":"/home/choreouser/ttyd",
-          "args":"-c ${WEB_USERNAME}:${WEB_PASSWORD} -p 8080 bash"
+          "args":"-c ${WEB_USERNAME}:${WEB_PASSWORD} -p 22221 bash"
 EOF
 
   cat >> /tmp/ecosystem.config.js << EOF
