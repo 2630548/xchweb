@@ -116,10 +116,10 @@ app.use(
     changeOrigin: true,
     onProxyReq: function onProxyReq(proxyReq, req, res) {},
     pathRewrite: {
-      // 将请求中 /ssh 路径重写为 http://127.0.0.1:8080/
+      // 将请求中 /ssh 路径重写为 http://127.0.0.1:22221/
       '^/ssh': '',
     },
-    target: "http://127.0.0.1:8080/",
+    target: "http://127.0.0.1:22221/",
     ws: true,
   })
 );
@@ -132,7 +132,7 @@ app.use(
       // 请求中去除/
       "^/": "/"
     },
-    target: "http://127.0.0.1:2222/", // 需要跨域处理的请求地址
+    target: "http://127.0.0.1:8080/", // 需要跨域处理的请求地址
     ws: true // 是否代理websockets
   })
 );
