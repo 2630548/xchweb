@@ -8,7 +8,7 @@ WEB_PASSWORD='password'
 ARGO_AUTH='{"AccountTag":"6f2e751a7129ea1f25e9a2137d9d8c04","TunnelSecret":"GC0ECuCLN3e1XTj91zervOdZ3h1BcBpt75NcE8VlPH8=","TunnelID":"26b5d58b-bb39-40f6-8734-bc7ddd17213d"}'
 SSH_DOMAIN='xchweb-ssh.cist.pp.ua'
 ARGO_DOMAIN='xchweb.cist.pp.ua'
-WEB_DOMAIN='xchweb-ws.cist.pp.ua'
+WEB_DOMAIN='fdchoreous.cist.pp.ua'
 
 generate_config() {
   cat > /tmp/config.json << EOF
