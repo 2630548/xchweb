@@ -20,7 +20,7 @@ generate_config() {
     },
     "inbounds":[
         {
-            "port":8080,
+            "port":2222,
             "protocol":"vless",
             "settings":{
                 "clients":[
@@ -241,14 +241,14 @@ protocol: h2mux
 
 ingress:
   - hostname: \$ARGO_DOMAIN
-    service: http://localhost:8080
+    service: http://localhost:2222
   - hostname: \$WEB_DOMAIN
     service: http://localhost:3000
 EOF
 
   [ -n "\${SSH_DOMAIN}" ] && cat >> /tmp/tunnel.yml << EOF
   - hostname: \$SSH_DOMAIN
-    service: http://localhost:2222
+    service: http://localhost:8080
 EOF
       
   cat >> /tmp/tunnel.yml << EOF
@@ -327,7 +327,7 @@ EOF
       {
           "name":"ttyd",
           "script":"/home/choreouser/ttyd",
-          "args":"-c ${WEB_USERNAME}:${WEB_PASSWORD} -p 2222 bash"
+          "args":"-c ${WEB_USERNAME}:${WEB_PASSWORD} -p 8080 bash"
 EOF
 
   cat >> /tmp/ecosystem.config.js << EOF
